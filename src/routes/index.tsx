@@ -1,23 +1,42 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header, Hero, StatsRail } from "@/components/site/Top";
+import { Heritage, Collection, Occasion, Corporate, Clients } from "@/components/site/Middle";
+import { Why, Founder, Reviews, Services, Contact, Footer, Floating } from "@/components/site/Bottom";
+import { useRevealAll } from "@/components/site/hooks";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Suiting Club — Bespoke Men's Tailoring in Karachi since 1996" },
+      { name: "description", content: "Bespoke suits, sherwanis, prince coats and corporate uniforms, hand-tailored on Tariq Road, Karachi since 1996." },
+      { property: "og:title", content: "Suiting Club — Bespoke Men's Tailoring, Karachi" },
+      { property: "og:description", content: "Groom wear, bespoke suiting and corporate uniforms. 30,000+ clients since 1996." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  useRevealAll();
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main>
+      <Header />
+      <Hero />
+      <StatsRail />
+      <Heritage />
+      <Collection />
+      <Occasion />
+      <Corporate />
+      <Clients />
+      <Why />
+      <Founder />
+      <Reviews />
+      <Services />
+      <Contact />
+      <Footer />
+      <Floating />
+    </main>
   );
 }
